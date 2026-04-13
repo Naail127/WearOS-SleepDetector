@@ -24,6 +24,8 @@ class SleepTrackingService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         val notification = createNotification()
         startForeground(NOTIFICATION_ID, notification)
+
+        // This will now start the Heart Rate monitor first
         sleepManager.startListening()
         return START_STICKY
     }
@@ -50,8 +52,8 @@ class SleepTrackingService : Service() {
     private fun createNotification(): Notification {
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Sleep Tracker")
-            .setContentText("Monitoring heart rate...")
-            .setSmallIcon(R.mipmap.ic_launcher) // Using your default launcher icon
+            .setContentText("Monitoring vitals...")
+            .setSmallIcon(R.mipmap.ic_launcher) // Ensure this icon exists in your res folder
             .setOngoing(true)
             .build()
     }

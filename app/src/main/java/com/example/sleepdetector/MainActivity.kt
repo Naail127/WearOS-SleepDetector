@@ -16,9 +16,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // This links to res/layout/activity_main.xml
-        // Ensure you have that layout file with the two buttons below!
         setContentView(R.layout.activity_main)
 
         val btnStart = findViewById<Button>(R.id.btnStart)
@@ -56,6 +53,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestPermissions() {
+        // Accelerometer does not require a dangerous permission request,
+        // BODY_SENSORS covers the heart rate sensor.
         ActivityCompat.requestPermissions(
             this,
             arrayOf(Manifest.permission.BODY_SENSORS),
